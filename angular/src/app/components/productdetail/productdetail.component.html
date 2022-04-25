@@ -1,0 +1,26 @@
+<div class="p-5 border border-3 rounded bg-success text-dark bg-opacity-10">
+
+    <div class="row" *ngIf="product">
+        <div class="col-md-4">
+            <img src="{{product.image}}" class="w-100 border border-3 rounded" alt="product image">
+        </div>
+        <div class="col-md-6">
+            <h1 class="card-title">{{product.name}}</h1>
+
+            <p class="card-text"> {{product.description}}</p>
+            <p class="card-text text-secondary"> {{product.quantity}} left in stock</p>
+            <p class="card-text"><span class="text-primary fw-bolder fs-5">&#8377; {{product.price}}</span></p>
+            <div class="form-floating mt-4 mb-1 w-50">
+                <input type="number" name="quancount" [(ngModel)]="quancount" #valid_quancount="ngModel" required min="1" max="{{product.quantity}}" placeholder="Quantity" class="form-control">
+                <div *ngIf="valid_quancount.invalid && valid_quancount.touched" class="alert alert-danger">
+                    <div *ngIf="valid_quancount.errors?.['required']">Quantity is required</div>
+                    <div *ngIf="valid_quancount.errors?.['min']">Quantity must be greater than 1</div>
+                    <div *ngIf="valid_quancount.errors?.['max']">We don't have sufficient quantity, can you reduce the quantity</div>
+                </div>
+                <label for="quancount">Enter Quantity *</label>
+            </div>
+            <p class="card-text"><button type="button" (click)="addtocart()" [disabled]="valid_quancount.invalid" class="btn btn-dark me-3">Add to Cart</button></p>
+        </div>
+    </div>
+
+</div>

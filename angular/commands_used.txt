@@ -1,0 +1,31 @@
+ng new angular
+npm i bootstrap --save  /** install bootstrap */
+npm i jwt-decode   /** install jwt decode package */
+npm i ngx-toastr --save   /** install toaser alert */
+npm i @angular/animations --save   /** install animations */
+npm i sweetalert2 --save  /** install sweet alert */
+
+
+/** ** for login and register ** */
+ng g c components/nav
+ng g c components/login
+ng g c components/register
+ng g c components/profile
+
+ng g c components/welcome
+ng g c components/product
+ng g c components/productdetail
+ng g c components/cart
+ng g c components/checkout
+ng g c components/order
+ng g c components/orderdetail
+
+ng g s services/auth
+ng g s services/profile
+ng g s services/product
+ng g s services/cart
+ng g s services/order
+ng g s services/address
+
+
+ng serve --o

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">
+        <img src="/assets/images/logo.png" alt="logo" height="100" width="100" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_head" aria-controls="navbar_head" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbar_head">
+
+        <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto">
+            <li class="nav-item mx-1">
+              <a class="nav-link  border border-2 rounded" routerLink="/products" *ngIf="isLoggedIn" routerLinkActive="text-white bg-secondary">Menu</a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link  border border-2 rounded  position-relative" routerLink="/cart" *ngIf="isLoggedIn" routerLinkActive="text-white bg-secondary">Cart 
+                <span class="position-absolute top-0 start-100 translate-middle p-1 py-0 bg-danger border border-light rounded-circle">
+                  <span class="">{{ cartcount }}</span>
+                </span>
+              </a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link  border border-2 rounded" routerLink="/profile" *ngIf="isLoggedIn" routerLinkActive="text-white bg-secondary">Profile</a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link  border border-2 rounded" routerLink="/order" *ngIf="isLoggedIn" routerLinkActive="text-white bg-secondary">My Order</a>
+            </li>
+
+
+          <li class="nav-item mx-1">
+            <a class="nav-link border border-2 rounded" routerLink="/login" *ngIf="!isLoggedIn" routerLinkActive="text-white bg-secondary" >Login</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link  border border-2 rounded" routerLink="/register" *ngIf="!isLoggedIn" routerLinkActive="text-white bg-secondary">Register</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link bg-info border border-2 rounded" (click)="logout()" *ngIf="isLoggedIn" routerLinkActive="text-white bg-secondary">Logout</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </nav>

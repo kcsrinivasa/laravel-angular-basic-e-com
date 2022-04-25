@@ -1,0 +1,34 @@
+<div>
+    <h2>My Orders</h2>
+
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Quanity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orderList">
+                    <td>{{order.order_id}}</td>
+                    <td class="pb-3 w-25"><img src="{{order.image}}" class="w-100 border border-3 rounded" alt="product image"></td>
+                    <td>{{order.name}}</td>
+                    <td>{{order.quantity}} </td>
+                    <td> <a [routerLink]="['/order',order.order_id,'details']" class="btn btn-secondary">view</a>  </td>
+                </tr>
+            </tbody>
+        </table>
+       
+    </div>
+
+
+    <div *ngIf="orderList && (orderList.length == 0)">
+        <div class=" fw-bold text-center m-5 p-5">
+           Your order list is empty. <a routerLink="/products" class="btn btn-dark">Order now</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+
+/** for create project */
+composer create-project laravel/laravel:^8.0 pizza
+
+//----------for api sanctum authnetication
+
+
+php artisan make:seeder UsersTableSeeder
+php artisan make:seeder ProductsTableSeeder
+
+php artisan make:request Auth/LoginRequest
+php artisan make:request Auth/RegisterRequest
+php artisan make:request AddressRequest
+php artisan make:request ProfileRequest
+
+php artisan make:controller AuthController
+php artisan make:controller ProfileController -r -mUser
+
+php artisan make:model Product -mcr
+php artisan make:model Cart -mcr
+php artisan make:model Order -mcr
+php artisan make:model OrderProduct -m
+php artisan make:model Address -mcr
+
+
+

@@ -1,0 +1,93 @@
+<div class="p-5 border border-3 rounded bg-success text-dark bg-opacity-10">
+    <h3>Checkout</h3>
+    <hr class="p-0 m-0">
+    <hr class="p-0 mt-1">
+
+    <h5>Shipping/Billing Address</h5>
+    <select class="form-control" name="creditcard" [(ngModel)]="selectedAddressId" #valid_addressid="ngModel" required >
+        <option value="">Select the address</option>
+        <option *ngFor="let address of addressList" [value]="address.id">{{address.name}} - {{address.city}}  - {{address.state}} - {{address.phone}}</option>
+    </select>
+        <div *ngIf="valid_addressid.invalid && valid_addressid.touched" class="alert alert-danger">
+            <div *ngIf="valid_addressid.errors?.['required']">Address is required</div>
+        </div>
+
+        <p>
+            <a (click)="newAddDiv=!newAddDiv">  Add new address </a>
+        </p>
+        <div>
+            <div  *ngIf="newAddDiv">
+              <div class="card card-body">
+                <form [formGroup]="formGaddress" (ngSubmit)="storeAddress()" #sform="ngForm">
+                    <div class="from-group form-floating">
+                        <input type="text" formControlName="name" name="name"  [ngClass]="{'is-invalid' : avform['name'].invalid && (avform['name'].touched || sform.submitted)}" class="form-control" placeholder="name" >
+                        <label>name</label>
+                        <div *ngIf="avform['name'].invalid && (avform['name'].touched || sform.submitted)" class="alert alert-danger">
+                            <div *ngIf="avform['name'].errors?.['required']">name is required</div>
+                        </div>
+                    </div>
+                    <div class="from-group form-floating">
+                        <input type="text" formControlName="city" name="city"  [ngClass]="{'is-invalid' : avform['city'].invalid && (avform['city'].touched || sform.submitted)}" class="form-control" placeholder="city" >
+                        <label>city</label>
+                        <div *ngIf="avform['city'].invalid && (avform['city'].touched || sform.submitted)" class="alert alert-danger">
+                            <div *ngIf="avform['city'].errors?.['required']">city is required</div>
+                        </div>
+                    </div>
+                    <div class="from-group form-floating">
+                        <input type="text" formControlName="landmark" name="landmark"  [ngClass]="{'is-invalid' : avform['landmark'].invalid && (avform['landmark'].touched || sform.submitted)}" class="form-control" placeholder="landmark" >
+                        <label>landmark</label>
+                        <div *ngIf="avform['landmark'].invalid && (avform['landmark'].touched || sform.submitted)" class="alert alert-danger">
+                            <div *ngIf="avform['landmark'].errors?.['required']">landmark is required</div>
+                        </div>
+                    </div>
+                    <div class="from-group form-floating">
+                        <input type="text" formControlName="street" name="street"  [ngClass]="{'is-invalid' : avform['street'].invalid && (avform['street'].touched || sform.submitted)}" class="form-control" placeholder="street" >
+                        <label>street</label>
+                        <div *ngIf="avform['street'].invalid && (avform['street'].touched || sform.submitted)" class="alert alert-danger">
+                            <div *ngIf="avform['street'].errors?.['required']">street is required</div>
+                        </div>
+                    </div>
+                    <div class="from-group form-floating">
+                        <input type="text" formControlName="state" name="state"  [ngClass]="{'is-invalid' : avform['state'].invalid && (avform['state'].touched || sform.submitted)}" class="form-control" placeholder="state" >
+                        <label>state</label>
+                        <div *ngIf="avform['state'].invalid && (avform['state'].touched || sform.submitted)" class="alert alert-danger">
+                            <div *ngIf="avform['state'].errors?.['required']">state is required</div>
+                        </div>
+                    </div>
+                    <div class="from-group form-floating">
+                        <input type="text" formControlName="zipcode" name="zipcode"  [ngClass]="{'is-invalid' : avform['zipcode'].invalid && (avform['zipcode'].touched || sform.submitted)}" class="form-control" placeholder="zipcode" >
+                        <label>Zip Code</label>
+                        <div *ngIf="avform['zipcode'].invalid && (avform['zipcode'].touched || sform.submitted)" class="alert alert-danger">
+                            <div *ngIf="avform['zipcode'].errors?.['required']">Zip Code is required</div>
+                        </div>
+                    </div>
+                    <div class="from-group form-floating">
+                        <input type="text" formControlName="phone" name="phone"  [ngClass]="{'is-invalid' : avform['phone'].invalid && (avform['phone'].touched || sform.submitted)}" class="form-control" placeholder="phone" >
+                        <label>Phone Number</label>
+                        <div *ngIf="avform['phone'].invalid && (avform['phone'].touched || sform.submitted)" class="alert alert-danger">
+                            <div *ngIf="avform['phone'].errors?.['required']">Phone Number is required</div>
+                            <div *ngIf="avform['phone'].errors?.['pattern']">Phone Number is invalid</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    <hr>  
+    <div class="form-floating mt-4 mb-1 w-50">
+        <input type="text" name="creditcard" [(ngModel)]="creditcard" #valid_creditcard="ngModel" required  minlength="12"  maxlength="12" placeholder="Credit card" class="form-control">
+        <div *ngIf="valid_creditcard.invalid && valid_creditcard.touched" class="alert alert-danger">
+            <div *ngIf="valid_creditcard.errors?.['required']">Credit card is required</div>
+            <div *ngIf="valid_creditcard.errors?.['minlength']">Enter valid card number</div>
+            <div *ngIf="valid_creditcard.errors?.['maxlength']">Enter valid card number</div>
+        </div>
+        <label for="creditcard">Credit card *</label>
+    </div>
+
+    <p class="card-text"><button type="button" (click)="placeorder()" [disabled]="valid_creditcard.invalid || valid_addressid.invalid" class="btn btn-dark me-3">Place Order</button></p>
+
+    
+</div>

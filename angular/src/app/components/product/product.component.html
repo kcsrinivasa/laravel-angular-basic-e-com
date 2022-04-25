@@ -1,0 +1,17 @@
+<div>
+    <h2>Menu</h2>
+    <div>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let product of productList">
+                <div class="card border border-3 my-2" style="width: 18rem;">
+                    <a [routerLink]="['/products',product.id,'details']"><img [src]="product.image" class="card-img-top" alt="..."></a>
+                    <div class="card-body">
+                      <h5 class="card-title">{{product.name}}</h5>
+
+                      <p class="card-text"><button type="button" class="btn btn-dark me-3" (click)="addtocart(product.id)">Add to Cart</button> <span class="text-primary fw-bolder">&#8377; {{product.price}}</span></p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

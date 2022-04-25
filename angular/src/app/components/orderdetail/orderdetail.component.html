@@ -1,0 +1,35 @@
+<div>
+    <h2> Orders details</h2>
+    <hr>
+    <div *ngIf="order">
+        <p>Order Id : <strong>{{order.id}}</strong></p>
+        <p>Amount : <strong>&#8377; {{order.amount}}</strong></p>
+        <p>Address : 
+            <span class="text-secondary" *ngIf="address">
+                    {{address.name}},
+                <br>{{address.street}}, {{address.landmark}}, {{address.city}},
+                <br>{{address.state}} - {{address.zipcode}},
+                <br>{{address.phone}}
+            </span>
+        </p>
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Quanity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of productList">
+                        <td class="pb-3 w-25"><img src="{{product.image}}" class="w-100 border border-3 rounded" alt="product image"></td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.quantity}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+        </div>
+    </div>
+</div>
